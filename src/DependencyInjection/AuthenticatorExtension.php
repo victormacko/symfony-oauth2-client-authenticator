@@ -4,8 +4,8 @@ namespace VictorMacko\AuthenticatorBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class AuthenticatorExtension extends Extension
 {
@@ -16,5 +16,11 @@ class AuthenticatorExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yaml');
+
+        $this->addAnnotatedClassesToCompile([
+            // you can define the fully qualified class names...
+            'VictorMacko\\AuthenticatorBundle\\GoogleAuthenticator',
+            'VictorMacko\\AuthenticatorBundle\\UserProvider',
+        ]);
     }
 }
