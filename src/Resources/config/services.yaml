@@ -1,6 +1,6 @@
 services:
-  VictorMacko\Security\UserProvider: ~
-  VictorMacko\Security\GoogleAuthenticator:
+  VictorMacko\AuthenticatorBundle\Security\UserProvider: ~
+  VictorMacko\AuthenticatorBundle\Security\GoogleAuthenticator:
     arguments:
       $roles: [ 'ROLE_USER', 'ROLE_OAUTH_USER' ]
       $checkRoute: 'connect_google_check'
