@@ -2,5 +2,7 @@ services:
   VictorMacko\AuthenticatorBundle\Security\UserProvider: ~
   VictorMacko\AuthenticatorBundle\Security\GoogleAuthenticator:
     arguments:
+      $clientRegistry: '@KnpU\OAuth2ClientBundle\Client\ClientRegistry'
+      $router: '@router'
       $roles: [ 'ROLE_USER', 'ROLE_OAUTH_USER' ]
       $checkRoute: 'connect_google_check'
