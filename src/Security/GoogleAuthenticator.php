@@ -21,17 +21,18 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
     use TargetPathTrait;
 
     public function __construct(
+        private string $clientName,
+        private array $roles,
+        private string $checkRoute,
         private ClientRegistry $clientRegistry,
         private RouterInterface $router,
-        private array $roles,
-        private string $checkRoute
     ) {
     }
 
     public function start(Request $request, AuthenticationException $authException = null): Response
     {
         return $this->clientRegistry
-            ->getClient('google') // key used in config/packages/knpu_oauth2_client.yaml
+            ->getClient($this->clientName) // key used in config/packages/knpu_oauth2_client.yaml
             ->redirect();
     }
 
@@ -43,7 +44,7 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
 
     public function authenticate(Request $request): Passport
     {
-        $client = $this->clientRegistry->getClient('google');
+        $client = $this->clientRegistry->getClient($this->clientName);
         $accessToken = $this->fetchAccessToken($client);
 
         return new SelfValidatingPassport(

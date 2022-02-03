@@ -6,6 +6,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use VictorMacko\AuthenticatorBundle\Security\GoogleAuthenticator;
 
 class AuthenticatorExtension extends Extension
 {
@@ -19,8 +20,18 @@ class AuthenticatorExtension extends Extension
 
         $this->addAnnotatedClassesToCompile([
             // you can define the fully qualified class names...
-            'VictorMacko\\AuthenticatorBundle\\GoogleAuthenticator',
-            'VictorMacko\\AuthenticatorBundle\\UserProvider',
+            'VictorMacko\\AuthenticatorBundle\\Security\\GoogleAuthenticator',
+            'VictorMacko\\AuthenticatorBundle\\Security\\UserProvider',
         ]);
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $definition = $container->getDefinition(GoogleAuthenticator::class);
+
+
+        $definition->replaceArgument('$roles', $config['roles']);
+        $definition->replaceArgument('$clientName', $config['client']);
+        $definition->replaceArgument('$checkRoute', $config['check_route']);
     }
 }
