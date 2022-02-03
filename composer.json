@@ -1,0 +1,37 @@
+{
+    "name": "victormacko/symfony-oauth2-client-authenticator",
+    "description": "Authenticator library for Google",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Victor Macko",
+            "email": "victor_macko@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "knpuniversity/oauth2-client-bundle": "^2.0",
+        "league/oauth2-google": "^4.0",
+        "symfony/security-bundle": "^6.0"
+    },
+    "require-dev": {
+
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "VictorMacko\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    }
+}
