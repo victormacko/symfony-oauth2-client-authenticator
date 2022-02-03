@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Security;
+namespace VictorMacko\Security;
 
 use Exception;
 use KnpU\OAuth2ClientBundle\Security\User\OAuthUserProvider;
