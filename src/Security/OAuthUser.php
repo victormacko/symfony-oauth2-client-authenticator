@@ -1,6 +1,6 @@
 <?php
 
-namespace VictorMacko\Security;
+namespace VictorMacko\AuthenticatorBundle\Security;
 
 use KnpU\OAuth2ClientBundle\Security\User\OAuthUser as BaseOAuthUser;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;

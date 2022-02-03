@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "VictorMacko\\": "src/"
+            "VictorMacko\\AuthenticatorBundle\\": "src/"
         }
     },
     "autoload-dev": {

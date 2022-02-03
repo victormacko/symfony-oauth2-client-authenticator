@@ -1,6 +1,6 @@
 <?php
 
-namespace VictorMacko\Security;
+namespace VictorMacko\AuthenticatorBundle\Security;
 
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
