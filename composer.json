@@ -1,6 +1,6 @@
 {
     "name": "victormacko/symfony-oauth2-client-authenticator",
-    "description": "Authenticator library for Google",
+    "description": "Symfony Authenticator library for Google using OAuth2 (knpuniversity/oauth2-client-bundle)",
     "type": "library",
     "license": "MIT",
     "authors": [
