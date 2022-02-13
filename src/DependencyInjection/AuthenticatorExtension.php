@@ -7,6 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use VictorMacko\AuthenticatorBundle\Security\GoogleAuthenticator;
+use VictorMacko\AuthenticatorBundle\Security\UserProvider;
 
 class AuthenticatorExtension extends Extension
 {
@@ -20,15 +21,14 @@ class AuthenticatorExtension extends Extension
 
         $this->addAnnotatedClassesToCompile([
             // you can define the fully qualified class names...
-            'VictorMacko\\AuthenticatorBundle\\Security\\GoogleAuthenticator',
-            'VictorMacko\\AuthenticatorBundle\\Security\\UserProvider',
+            GoogleAuthenticator::class,
+            UserProvider::class,
         ]);
 
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
         $definition = $container->getDefinition(GoogleAuthenticator::class);
-
 
         $definition->replaceArgument('$roles', $config['roles']);
         $definition->replaceArgument('$clientName', $config['client']);
