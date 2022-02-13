@@ -4,5 +4,6 @@ services:
     arguments:
       $clientRegistry: '@KnpU\OAuth2ClientBundle\Client\ClientRegistry'
       $router: '@router'
+      $clientName: null
       $roles: [ 'ROLE_USER', 'ROLE_OAUTH_USER' ]
       $checkRoute: 'connect_google_check'
