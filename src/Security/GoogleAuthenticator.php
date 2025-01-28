@@ -29,7 +29,7 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
     ) {
     }
 
-    public function start(Request $request, AuthenticationException $authException = null): Response
+    public function start(Request $request, ?AuthenticationException $authException = null): Response
     {
         return $this->clientRegistry
             ->getClient($this->clientName) // key used in config/packages/knpu_oauth2_client.yaml
