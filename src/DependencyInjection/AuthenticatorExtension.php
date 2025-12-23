@@ -11,19 +11,13 @@ use VictorMacko\AuthenticatorBundle\Security\UserProvider;
 
 class AuthenticatorExtension extends Extension
 {
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader(
             $container,
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yaml');
-
-        $this->addAnnotatedClassesToCompile([
-            // you can define the fully qualified class names...
-            GoogleAuthenticator::class,
-            UserProvider::class,
-        ]);
 
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
